@@ -10,7 +10,7 @@
   blockinfile:
     path: "{{ nvim_coc_settings_file }}"
     marker: "// !-- {mark} ANSIBLE MANAGED BLOCK --"
-    insertbefore: ".*LSP Provider(End).*"
+    insertbefore: ".*LSP Provider\\(End\\).*"
     block: |
       "ccls": {
         "command": "ccls",
