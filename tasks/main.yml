@@ -1,0 +1,34 @@
+---
+- name: CCLS | Install ccls | nix
+  lineinfile:
+    path: "{{ nix_config }}"
+    insertbefore: ".* Language Servers End .*"
+    line: "ccls"
+
+- name: CCLS | Configure ccls for Neovim | nix
+  changed_when: false
+  blockinfile:
+    path: "{{ nvim_coc_settings_file }}"
+    insertbefore: ".* LSP Provider(End) .*"
+    block: |
+      "ccls": {
+        "command": "ccls",
+        "filetypes": ["c", "cc", "cpp", "cxx", "c++", "objc", "objcpp"],
+        "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".vscode"],
+        "initializationOptions": {
+          "cache": {
+            "directory": "{{ ccls_tmp_dir }}"
+          },
+          "clang": {
+            // "resourceDir": "{{ ccls_resource_dir }}",
+            // "extraArgs": [
+            //   "-isystem",
+            //   "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+            //   "-I",
+            //   "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
+            // ]
+            // clang args(begin)
+            // clang args(end)
+          }
+        }
+      },
