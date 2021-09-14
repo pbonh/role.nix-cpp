@@ -10,7 +10,7 @@
   blockinfile:
     path: "{{ nvim_coc_settings_file }}"
     marker: "// !-- {mark} ANSIBLE MANAGED BLOCK --"
-    insertbefore: ".* LSP Provider(End).*"
+    insertbefore: ".*LSP Provider(End).*"
     block: |
       "ccls": {
         "command": "ccls",
@@ -20,16 +20,16 @@
           "cache": {
             "directory": "{{ ccls_tmp_dir }}"
           },
-          "clang": {
-            // "resourceDir": "ccls_resource_dir",
-            // "extraArgs": [
-            //   "-isystem",
-            //   "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-            //   "-I",
-            //   "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
-            // ]
-            // clang args(begin)
-            // clang args(end)
-          }
+          // clang args(begin)
+          // clang args(end)
+          // "clang": {
+          //   "resourceDir": "ccls_resource_dir",
+          //   "extraArgs": [
+          //     "-isystem",
+          //     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+          //     "-I",
+          //     "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
+          //   ]
+          // }
         }
       },
