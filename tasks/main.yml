@@ -9,11 +9,11 @@
   changed_when: false
   blockinfile:
     path: "{{ nvim_coc_settings_file }}"
-    marker: "// !-- {mark} ANSIBLE MANAGED BLOCK --"
+    marker: "// !-- {mark} CCLS Language Server Config --"
     insertbefore: ".*LSP Provider\\(End\\).*"
     block: |
       "ccls": {
-        "command": "ccls",
+        "command": "{{ nix_bin }}/ccls",
         "filetypes": ["c", "cc", "cpp", "cxx", "c++", "objc", "objcpp"],
         "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".vscode"],
         "initializationOptions": {
@@ -22,14 +22,5 @@
           },
           // clang args(begin)
           // clang args(end)
-          // "clang": {
-          //   "resourceDir": "ccls_resource_dir",
-          //   "extraArgs": [
-          //     "-isystem",
-          //     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-          //     "-I",
-          //     "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
-          //   ]
-          // }
         }
       },
