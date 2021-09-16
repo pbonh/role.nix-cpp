@@ -1,9 +1,15 @@
 ---
 - name: CCLS | Install ccls | nix
+  changed_when: false
   lineinfile:
     path: "{{ nix_config }}"
     insertbefore: ".* Language Servers End .*"
     line: "ccls"
+
+- name: Nix | Build Nix Environment | command
+  changed_when: false
+  command:
+    cmd: "{{ nix_bin }}/nix-env -i {{ nix_buildenv_name }}"
 
 - name: CCLS | Configure ccls for Neovim | nix
   changed_when: false
