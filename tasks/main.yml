@@ -1,15 +1,22 @@
 ---
-- name: CCLS | Install ccls | nix
+- name: CCLS | Install ccls | lineinfile
   changed_when: false
   lineinfile:
     path: "{{ nix_config }}"
     insertbefore: ".* Language Servers End .*"
     line: "ccls"
 
-- name: Nix | Build Nix Environment | command
+- name: Nix | Build Nix Environment | nix
   changed_when: false
   command:
     cmd: "{{ nix_bin }}/nix-env -i {{ nix_buildenv_name }}"
+
+- name: CCLS | Install Highlighting Plugin for Neovim | nix
+  changed_when: false
+  lineinfile:
+    path: "{{ nvim_init }}"
+    insertbefore: ".*Language Server Protocol Providers\\(End\\).*"
+    line: "Plug 'jackguo380/vim-lsp-cxx-highlight'"
 
 - name: CCLS | Configure ccls for Neovim | nix
   changed_when: false
@@ -26,6 +33,7 @@
           "cache": {
             "directory": "{{ ccls_tmp_dir }}"
           },
+          "highlight": { "lsRanges" : true },
           // clang args(begin)
           // clang args(end)
         }
