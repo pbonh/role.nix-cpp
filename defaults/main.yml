@@ -20,3 +20,39 @@ nvim_init: "{{ nvim_config_dir }}/init.vim"
 nvim_plugin_config_dir: "{{ nvim_config_dir }}/nvim-config"
 nvim_coc_settings_file: "{{ nvim_config_dir }}/coc-settings.json"
 ccls_tmp_dir: /tmp/ccls
+vscode_cpptools_version: 1.6.0
+vscode_cpptools_download: "{{ dotfiles_user_home }}/.local/vscode-cpptools"
+vscode_cpptools_extension: cpptools-linux
+vscode_cpptools_extension_path: "{{ vscode_cpptools_download }}/{{ vscode_cpptools_extension }}"
+vscode_cpptools_vsix_file_path: "{{ vscode_cpptools_extension_path }}.vsix"
+vscode_cpptools_extension_file_path: "{{ vscode_cpptools_extension_path }}/extension"
+vscode_cpptools_executable_path: "{{ vscode_cpptools_extension_file_path }}/debugAdapters/bin/OpenDebugAD7"
+vscode_cpptools_executable_path_mono: "{{ vscode_cpptools_extension_path }}/extensions/debugAdapters/bin/mono.linux"
+vscode_cpptools_extension_json_config: "{{ vscode_cpptools_extension_file_path }}/cppdbg.ad7Engine.json"
+vscode_cpptools_extension_neovim_json_config: "{{ vscode_cpptools_extension_file_path }}/debugAdapters/bin/nvim-dap.ad7Engine.json"
+vscode_cpptools_runner: |
+    dap.configurations.cpp = {
+      {
+        name = "Launch file",
+        type = "cppdbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = true,
+      },
+      {
+        name = 'Attach to gdbserver :1234',
+        type = 'cppdbg',
+        request = 'launch',
+        MIMode = 'gdb',
+        miDebuggerServerAddress = 'localhost:1234',
+        miDebuggerPath = '/usr/bin/gdb',
+        cwd = '${workspaceFolder}',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+      },
+    }
+

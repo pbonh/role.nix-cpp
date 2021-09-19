@@ -1,55 +1,15 @@
 ---
-- name: CCLS | Install ccls | lineinfile
-  changed_when: false
-  lineinfile:
-    path: "{{ nix_config }}"
-    insertbefore: ".* Language Servers End .*"
-    line: "ccls"
+- name: CCLS | Install ccls | task
+  import_tasks: install_ccls.yml
 
-- name: CMake | Install cmake | lineinfile
-  changed_when: false
-  lineinfile:
-    path: "{{ nix_config }}"
-    insertbefore: ".* Language Servers End .*"
-    line: "ccls"
+- name: CMake | Install cmake | task
+  import_tasks: install_cmake.yml
+
+- name: VSCode CppTools | Install VSCode CppTools | task
+  import_tasks: install_vscode_cpptools.yml
 
 - name: Nix | Build Nix Environment | nix
   changed_when: false
   command:
     cmd: "{{ nix_bin }}/nix-env -i {{ nix_buildenv_name }}"
-
-- name: CCLS | Configure ccls for Neovim | blockinfile
-  changed_when: false
-  blockinfile:
-    path: "{{ nvim_coc_settings_file }}"
-    marker: "// !-- {mark} CCLS Language Server Config --"
-    insertbefore: ".*LSP Provider\\(End\\).*"
-    block: |
-      "ccls": {
-        "command": "{{ nix_bin }}/ccls",
-        "filetypes": ["c", "cc", "cpp", "cxx", "c++", "objc", "objcpp"],
-        "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".vscode"],
-        "initializationOptions": {
-          "cache": {
-            "directory": "{{ ccls_tmp_dir }}"
-          },
-          "highlight": { "lsRanges" : true },
-          // clang args(begin)
-          // clang args(end)
-        }
-      },
-
-- name: CCLS | Install Highlighting Plugin for Neovim | lineinfile
-  changed_when: false
-  lineinfile:
-    path: "{{ nvim_init }}"
-    insertbefore: ".*Language Server Protocol Providers\\(End\\).*"
-    line: "Plug 'jackguo380/vim-lsp-cxx-highlight'"
-
-- name: CMake | Install CMake Plugin for Neovim | lineinfile
-  changed_when: false
-  lineinfile:
-    path: "{{ nvim_init }}"
-    insertbefore: ".*Language Server Protocol Providers\\(End\\).*"
-    line: "Plug 'Shatur/neovim-cmake'"
 
