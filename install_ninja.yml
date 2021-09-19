@@ -1,0 +1,7 @@
+- name: Ninja | Install Ninja | lineinfile
+  changed_when: false
+  lineinfile:
+    path: "{{ nix_config }}"
+    insertbefore: ".* Language Servers End .*"
+    line: "ninja"
+

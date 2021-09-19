@@ -5,6 +5,9 @@
 - name: CMake | Install cmake | task
   import_tasks: install_cmake.yml
 
+- name: Ninja | Install ninja | task
+  import_tasks: install_ninja.yml
+
 - name: VSCode CppTools | Install VSCode CppTools | task
   import_tasks: install_vscode_cpptools.yml
 
