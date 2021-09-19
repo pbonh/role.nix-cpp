@@ -27,7 +27,7 @@
     mode: +x
 
 - name: VSCode CppTools | Copy File for Neovim Plugin | file
-  file:
+  copy:
     src: "{{ vscode_cpptools_extension_json_config }}"
     dest: "{{ vscode_cpptools_extension_neovim_json_config }}"
     mode: +x
