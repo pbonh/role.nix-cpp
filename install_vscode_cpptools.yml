@@ -10,6 +10,11 @@
     url: "https://github.com/microsoft/vscode-cpptools/releases/download/{{ vscode_cpptools_version }}/{{ vscode_cpptools_extension }}.vsix"
     dest: "{{ vscode_cpptools_vsix_file_path }}"
 
+- name: VSCode CppTools | Extract VSCode extension | unarchive
+  unarchive:
+    src: "{{ vscode_cpptools_vsix_file_path }}"
+    dest: "{{ vscode_cpptools_extension_path }}"
+
 - name: VSCode CppTools | Make Extension executable | file
   file:
     dest: "{{ vscode_cpptools_executable_path }}"
