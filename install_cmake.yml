@@ -3,7 +3,7 @@
   lineinfile:
     path: "{{ nix_config }}"
     insertbefore: ".* Language Servers End .*"
-    line: "ccls"
+    line: "cmake"
 
 - name: CMake | Install CMake Plugin for Neovim | lineinfile
   changed_when: false
