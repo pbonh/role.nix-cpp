@@ -1,7 +1,13 @@
 ---
-- name: VSCode CppTools | Setup VSCode extension folder | file
+- name: VSCode CppTools | Setup VSCode extension download folder | file
   file:
     path: "{{ vscode_cpptools_download }}"
+    state: directory
+    mode: '0755'
+
+- name: VSCode CppTools | Setup VSCode extension folder | file
+  file:
+    path: "{{ vscode_cpptools_extension_path }}"
     state: directory
     mode: '0755'
 
