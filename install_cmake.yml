@@ -16,7 +16,7 @@
   changed_when: false
   blockinfile:
     path: "{{ nvim_init }}"
-    marker: "// !-- {mark} CMake Config --"
+    marker: "\" !-- {mark} CMake Config --"
     insertbefore: ".*Extra Plugin Settings\\(End\\).*"
     block: |
       lua << EOF
