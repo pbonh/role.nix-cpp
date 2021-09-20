@@ -12,3 +12,14 @@
     insertbefore: ".*Language Server Protocol Providers\\(End\\).*"
     line: "Plug 'Shatur/neovim-cmake'"
 
+- name: CMake | Configure cmake for Neovim | blockinfile
+  changed_when: false
+  blockinfile:
+    path: "{{ nvim_init }}"
+    marker: "// !-- {mark} CMake Config --"
+    insertbefore: ".*Extra Plugin Settings\\(End\\).*"
+    block: |
+      lua << EOF
+          require('telescope').load_extension('cmake')
+      EOF
+
