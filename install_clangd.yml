@@ -1,0 +1,8 @@
+---
+- name: Clangd | Install Clangd | lineinfile
+  changed_when: false
+  lineinfile:
+    path: "{{ nix_config }}"
+    insertbefore: ".* Language Servers End .*"
+    line: "clang-tools"
+

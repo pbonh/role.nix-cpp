@@ -2,6 +2,9 @@
 - name: CCLS | Install ccls | task
   import_tasks: install_ccls.yml
 
+- name: Clangd | Install Clangd | task
+  import_tasks: install_clangd.yml
+
 - name: CMake | Install cmake | task
   import_tasks: install_cmake.yml
 
