@@ -20,6 +20,7 @@ nvim_init: "{{ nvim_config_dir }}/init.vim"
 nvim_plugin_config_dir: "{{ nvim_config_dir }}/nvim-config"
 nvim_coc_settings_file: "{{ nvim_config_dir }}/coc-settings.json"
 ccls_tmp_dir: /tmp/ccls
+clang_format_fileoption: file
 vscode_cpptools_version: 1.6.0
 vscode_cpptools_download: "{{ dotfiles_user_home }}/.local/vscode-cpptools"
 vscode_cpptools_extension: cpptools-linux
