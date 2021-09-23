@@ -84,3 +84,7 @@
     insertbefore: ".*ALE Settings\\(End\\).*"
     block: |
       let g:ale_c_parse_compile_commands=1
+      let g:ale_linters = {
+      \   'c': ['gcc', 'g++'],
+      \   'cpp': ['gcc', 'g++'],
+      \}
