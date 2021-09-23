@@ -80,6 +80,7 @@
   changed_when: false
   blockinfile:
     path: "{{ nvim_init }}"
+    marker: '" !-- {mark} ALE C/C++ Config --'
     insertbefore: ".*ALE Settings\\(End\\).*"
     block: |
       let g:ale_c_parse_compile_commands=1
