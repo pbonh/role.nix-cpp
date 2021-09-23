@@ -12,7 +12,7 @@
     path: "{{ nvim_coc_settings_file }}"
     marker: "// !-- {mark} CCLS Language Server Config --"
     insertbefore: ".*LSP Provider\\(End\\).*"
-    block: |
+    block: |2
       "ccls": {
         "command": "{{ nix_bin }}/ccls",
         "filetypes": ["c", "cc", "cpp", "cxx", "c++", "objc", "objcpp"],
@@ -40,10 +40,11 @@
     path: "{{ nvim_init }}"
     marker: '" !-- {mark} CMake Config --'
     insertbefore: ".*Extra Plugin Settings\\(End\\).*"
-    block: |
+    block: |2
       lua << EOF
           require('telescope').load_extension('cmake')
       EOF
+      nnoremap <silent> <leader>c :Telescope select_target<cr>
 
 - name: VSCode CppTools | Configure vscode-cpptools for Neovim | blockinfile
   changed_when: false
@@ -51,7 +52,7 @@
     path: "{{ nvim_init }}"
     marker: '" !-- {mark} VSCode CppTools Config --'
     insertbefore: ".*Extra Plugin Settings\\(End\\).*"
-    block: |
+    block: |2
       lua << EOF
         local dap = require('dap')
         dap.adapters.cppdbg = {
@@ -68,7 +69,7 @@
     path: "{{ nvim_init }}"
     marker: '" !-- {mark} Neoformat C/C++ Config --'
     insertbefore: ".*Neoformat Settings\\(End\\).*"
-    block: |
+    block: |2
       let g:neoformat_cpp_clangformat = {
         \ 'exe': '{{ nix_bin }}/clang-format',
         \ 'args': ['--style={{ clang_format_fileoption }}']
@@ -82,7 +83,7 @@
     path: "{{ nvim_init }}"
     marker: '" !-- {mark} ALE C/C++ Config --'
     insertbefore: ".*ALE Settings\\(End\\).*"
-    block: |
+    block: |2
       let g:ale_c_parse_compile_commands=1
       let g:ale_linters = {
       \   'c': ['gcc', 'g++'],
