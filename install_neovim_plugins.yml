@@ -75,3 +75,11 @@
       \}
       let g:neoformat_enabled_cpp = ['clangformat']
       let g:neoformat_enabled_c = ['clangformat']
+
+- name: Neomake | Install Neomake C++ Settings | blockinfile
+  changed_when: false
+  blockinfile:
+    path: "{{ nvim_init }}"
+    insertbefore: ".*ALE Settings\\(End\\).*"
+    block: |
+      let g:ale_c_parse_compile_commands=1
