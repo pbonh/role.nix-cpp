@@ -44,7 +44,17 @@
       lua << EOF
           require('telescope').load_extension('cmake')
       EOF
-      nnoremap <silent> <leader>c :Telescope select_target<cr>
+      nmap <Leader>c [cmake-p]
+      xmap <Leader>c [cmake-p]
+      nnoremap <silent> [cmake-p]c :CMake configure<CR>
+      nnoremap <silent> [cmake-p]b :CMake build<CR>
+      nnoremap <silent> [cmake-p]a :CMake build_all<CR>
+      nnoremap <silent> [cmake-p]r :CMake run<CR>
+      nnoremap <silent> [cmake-p]d :CMake debug<CR>
+      nnoremap <silent> [cmake-p]l :CMake clean<CR>
+      nnoremap <silent> [cmake-p]t :Telescope select_target<CR>
+      let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}
+      let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}
 
 - name: VSCode CppTools | Configure vscode-cpptools for Neovim | blockinfile
   changed_when: false
