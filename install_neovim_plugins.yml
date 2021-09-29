@@ -57,7 +57,7 @@
       nnoremap <silent> [telescope-p]b :Telescope cmake select_build_type<CR>
       let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}
       let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}
-      let g:cmake_configure_arguments=g.cmake_configure_arguments .. ' -G Ninja' .. '-DCMAKE_C_COMPILER=/usr/bin/gcc' .. '-DCMAKE_CXX_COMPILER=/usr/bin/g++'
+      let g:cmake_configure_arguments=g.cmake_configure_arguments . " -G Ninja" . "-DCMAKE_C_COMPILER=/usr/bin/gcc" . "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
 
 - name: VSCode CppTools | Configure vscode-cpptools for Neovim | blockinfile
   changed_when: false
