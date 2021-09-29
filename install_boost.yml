@@ -2,5 +2,7 @@
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt:
-    name: libboost-all-dev
+    name:
+      - build-essential
+      - libboost-all-dev
     state: latest
