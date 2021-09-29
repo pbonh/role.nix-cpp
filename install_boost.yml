@@ -1,0 +1,6 @@
+- name: Boost | Install Boost | apt
+  become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  apt:
+    name: libboost-all-dev
+    state: latest

@@ -5,6 +5,9 @@
 - name: Clangd | Install Clangd | task
   import_tasks: install_clangd.yml
 
+- name: Boost | Install boost | task
+  import_tasks: install_boost.yml
+
 - name: CMake | Install cmake | task
   import_tasks: install_cmake.yml
 
