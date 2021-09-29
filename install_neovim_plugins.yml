@@ -44,9 +44,17 @@
       lua << EOF
           require('telescope').load_extension('cmake')
       EOF
+      command! CMakeDefaultConfigureOptions :CMake<Space>configure<Space>-G<Space>Ninja<Space>-DCMAKE_C_COMPILER=/usr/bin/gcc<Space>-DCMAKE_CXX_COMPILER=/usr/bin/g++
+      command! CMakeCopyCompileCommands :call system('ln -fs build/linux-debug/compile_commands.json .')
+      function! s:cmake_configure_func()
+           :CMakeDefaultConfigureOptions
+           :CMakeCopyCompileCommands
+      endfunction
+      command! -nargs=0 CMakeDefaultConfigureCommand call s:cmake_configure_func()
       nmap <Leader>c [cmake-p]
       xmap <Leader>c [cmake-p]
-      nnoremap <silent> [cmake-p]c :CMake configure<CR>
+      "nnoremap <silent> [cmake-p]c :CMake configure<CR>
+      nnoremap <silent> [cmake-p]c :CMakeDefaultConfigureCommand<CR>
       nnoremap <silent> [cmake-p]b :CMake build<CR>
       nnoremap <silent> [cmake-p]a :CMake build_all<CR>
       nnoremap <silent> [cmake-p]r :CMake run<CR>
