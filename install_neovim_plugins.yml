@@ -52,7 +52,9 @@
       nnoremap <silent> [cmake-p]r :CMake run<CR>
       nnoremap <silent> [cmake-p]d :CMake debug<CR>
       nnoremap <silent> [cmake-p]l :CMake clean<CR>
-      nnoremap <silent> [cmake-p]t :Telescope select_target<CR>
+      nnoremap <silent> [cmake-p]t :CMake set_target_arguments<Space>
+      nnoremap <silent> [telescope-p]c :Telescope cmake select_target<CR>
+      nnoremap <silent> [telescope-p]b :Telescope cmake select_build_type<CR>
       let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}
       let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}
 
