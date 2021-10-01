@@ -19,21 +19,14 @@ cpp_neoformat_plugin_settings:
   - "let g:neoformat_enabled_c = ['clangformat']"
 neoformat_plugin_settings: "{{ cpp_neoformat_plugin_settings }}"
 cpp_dap_plugin_settings:
-  - "lua << EOF"
   - "  local dap = require('dap')"
   - "  dap.adapters.cppdbg = {"
   - "    type = 'executable',"
   - "    command = '{{ vscode_cpptools_executable_path }}',"
   - "  }"
-  - "\n"
   - "  {{ vscode_cpptools_runner | indent(width=2) }}"
-  - "EOF"
 dap_plugin_settings: "{{ cpp_dap_plugin_settings }}"
 cpp_extra_plugin_settings:
-  - "lua << EOF"
-  - "    require('telescope').load_extension('cmake')"
-  - "EOF"
-  - "\n"
   - "command! CMakeDefaultConfigureOptions :CMake<Space>configure<Space>-G<Space>Ninja<Space>-DCMAKE_C_COMPILER=/usr/bin/gcc<Space>-DCMAKE_CXX_COMPILER=/usr/bin/g++"
   - "command! CMakeCopyCompileCommands :call system('ln -fs build/linux-debug/compile_commands.json .')"
   - "function! s:cmake_configure_func()"
@@ -55,6 +48,9 @@ cpp_extra_plugin_settings:
   - "let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}"
   - "let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}"
 extra_plugin_settings: "{{ cpp_extra_plugin_settings }}"
+cpp_extra_lua_plugin_settings:
+  - "require('telescope').load_extension('cmake')"
+extra_lua_plugin_settings: "{{ cpp_extra_lua_plugin_settings }}"
 ccls_clang_args: {}
 ccls_coc_config:
   ccls:
