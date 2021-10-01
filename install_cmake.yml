@@ -2,5 +2,5 @@
   changed_when: false
   lineinfile:
     path: "{{ nix_config }}"
-    insertbefore: ".* Language Servers End .*"
+    insertbefore: ".* Language Tools End .*"
     line: "cmake"
