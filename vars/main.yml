@@ -76,7 +76,7 @@ ccls_coc_config:
         directory: "{{ ccls_tmp_dir }}"
       highlight:
         lsRanges: true
-lsp_provider_coc_settings: "{{ lsp_provider_coc_settings | combine(ccls_coc_config) }}"
+lsp_provider_coc_settings: "{{ ccls_coc_config }}"
 cpp_tools_nix:
   - clang-tools
   - ccls
