@@ -69,6 +69,7 @@ ccls_coc_config:
       - .git/
       - .vscode
     initializationOptions:
+      clang: "{{ ccls_clang_args }}"
       cache:
         directory: "{{ ccls_tmp_dir }}"
       highlight:
