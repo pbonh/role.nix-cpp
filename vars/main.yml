@@ -2,14 +2,14 @@
 cpp_neovim_plugins:
   - "Plug 'jackguo380/vim-lsp-cxx-highlight'"
   - "Plug 'Shatur/neovim-cmake'"
-language_neovim_plugins: "{{ language_neovim_plugins + cpp_neovim_plugins }}"
+language_neovim_plugins: "{{ cpp_neovim_plugins }}"
 cpp_ale_plugin_settings:
   - "let g:ale_c_parse_compile_commands=1"
   - "let g:ale_linters = {"
   - "\\   'c': ['gcc', 'g++'],"
   - "\\   'cpp': ['gcc', 'g++'],"
   - "\\}"
-ale_plugin_settings: "{{ ale_plugin_settings + cpp_ale_plugin_settings }}"
+ale_plugin_settings: "{{ cpp_ale_plugin_settings }}"
 cpp_neoformat_plugin_settings:
   - "let g:neoformat_cpp_clangformat = {"
   - "\\   'exe': '{{ nix_bin }}/clang-format',"
@@ -17,7 +17,7 @@ cpp_neoformat_plugin_settings:
   - "\\}"
   - "let g:neoformat_enabled_cpp = ['clangformat']"
   - "let g:neoformat_enabled_c = ['clangformat']"
-neoformat_plugin_settings: "{{ neoformat_plugin_settings + cpp_neoformat_plugin_settings }}"
+neoformat_plugin_settings: "{{ cpp_neoformat_plugin_settings }}"
 cpp_dap_plugin_settings:
   - "lua << EOF"
   - "  local dap = require('dap')"
@@ -27,7 +27,7 @@ cpp_dap_plugin_settings:
   - "  }"
   - "  {{ vscode_cpptools_runner }}"
   - "EOF"
-dap_plugin_settings: "{{ dap_plugin_settings + cpp_dap_plugin_settings }}"
+dap_plugin_settings: "{{ cpp_dap_plugin_settings }}"
 cpp_extra_plugin_settings:
   - "lua << EOF"
   - "    require('telescope').load_extension('cmake')"
@@ -53,7 +53,7 @@ cpp_extra_plugin_settings:
   - "nnoremap <silent> [telescope-p]b :Telescope cmake select_build_type<CR>"
   - "let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}"
   - "let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}"
-extra_plugin_settings: "{{ extra_plugin_settings + cpp_extra_plugin_settings }}"
+extra_plugin_settings: "{{ cpp_extra_plugin_settings }}"
 ccls_clang_args: {}
 ccls_coc_config:
   ccls:
@@ -82,4 +82,4 @@ cpp_tools_nix:
   - ccls
   - cmake
   - ninja
-lang_tools_nix: "{{ lang_tools_nix + cpp_tools_nix }}"
+lang_tools_nix: "{{ cpp_tools_nix }}"
