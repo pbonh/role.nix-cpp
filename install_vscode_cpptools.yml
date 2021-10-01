@@ -20,6 +20,7 @@
   unarchive:
     src: "{{ vscode_cpptools_vsix_file_path }}"
     dest: "{{ vscode_cpptools_extension_path }}"
+    creates: "{{ vscode_cpptools_executable_path }}"
 
 - name: VSCode CppTools | Make Extension executable | file
   file:
