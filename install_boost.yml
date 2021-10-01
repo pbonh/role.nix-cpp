@@ -5,4 +5,6 @@
     name:
       - build-essential
       - libboost-all-dev
+      - flex
+      - bison
     state: latest
