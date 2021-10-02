@@ -51,7 +51,6 @@ extra_plugin_settings: "{{ cpp_extra_plugin_settings }}"
 cpp_extra_lua_plugin_settings:
   - "require('telescope').load_extension('cmake')"
 extra_lua_plugin_settings: "{{ cpp_extra_lua_plugin_settings }}"
-ccls_clang_args: {}
 ccls_coc_config:
   ccls:
     command: "{{ nix_bin }}/ccls"
