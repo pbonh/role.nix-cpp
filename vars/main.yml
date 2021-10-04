@@ -59,6 +59,8 @@ ccls_coc_config:
       - cc
       - cpp
       - cxx
+      - hpp
+      - hxx
       - c++
       - objc
       - objcpp
@@ -79,4 +81,5 @@ cpp_tools_nix:
   - ccls
   - cmake
   - ninja
+  - boost
 lang_tools_nix: "{{ cpp_tools_nix }}"
