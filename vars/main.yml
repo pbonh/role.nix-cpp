@@ -81,5 +81,4 @@ cpp_tools_nix:
   - ccls
   - cmake
   - ninja
-  - boost
 lang_tools_nix: "{{ cpp_tools_nix }}"
