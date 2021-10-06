@@ -12,6 +12,13 @@ nix_config: "{{ xdg_config_dir }}/nixpkgs/config.nix"
 zsh_username: "{{ lookup('env', 'USER') }}"
 git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
+cpp_ubuntu_packages:
+  - build-essential
+  - libboost-all-dev
+  - cmake
+  - ninja-build
+  - flex
+  - bison
 nvim_share_dir: "{{ xdg_share_dir }}/nvim"
 nvim_vim_plug_dir: "{{ nvim_share_dir }}/site/autoload"
 nvim_plugged_dir: "{{ nvim_share_dir }}/plugged"

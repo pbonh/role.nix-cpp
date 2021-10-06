@@ -2,11 +2,5 @@
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt:
-    name:
-      - build-essential
-      - libboost-all-dev
-      - cmake
-      - ninja-build
-      - flex
-      - bison
+    name: "{{ cpp_ubuntu_packages }}"
     state: latest
