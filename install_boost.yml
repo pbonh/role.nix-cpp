@@ -5,6 +5,8 @@
     name:
       - build-essential
       - libboost-all-dev
+      - cmake
+      - ninja-build
       - flex
       - bison
     state: latest
