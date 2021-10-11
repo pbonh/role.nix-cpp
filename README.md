@@ -1,22 +1,62 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Nix C/C++ Development Role
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ansible
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Default CCLS Language Server Config
+```yaml
+ccls_coc_config:
+  ccls:
+    command: "{{ nix_bin }}/ccls"
+    filetypes:
+      - c
+      - cc
+      - cpp
+      - cxx
+      - hpp
+      - hxx
+      - c++
+      - objc
+      - objcpp
+    rootPatterns:
+      - .ccls
+      - compile_commands.json
+      - .git/
+      - .vscode
+    initializationOptions:
+      clang: "{{ ccls_clang_args }}"
+      cache:
+        directory: "{{ ccls_tmp_dir }}"
+      highlight:
+        lsRanges: true
+```
+
+Arguments to clang from ccls:
+```yaml
+ccls_clang_args:
+  resourceDir: "path/to/resource/dir
+  extraArgs:
+    - extraArg1
+    - extraArg2
+  excludeArgs:
+    - excludeArg1
+    - excludeArg2
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Nix Roles
+* tools
+* dot
 
 Example Playbook
 ----------------
