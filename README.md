@@ -11,7 +11,7 @@ Ansible
 Role Variables
 --------------
 
-Default CCLS Language Server Config
+Default CCLS Language Server Config:
 ```yaml
 ccls_coc_config:
   ccls:
