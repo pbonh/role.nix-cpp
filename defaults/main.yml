@@ -26,6 +26,7 @@ nvim_config_dir: "{{ xdg_config_dir }}/nvim"
 nvim_init: "{{ nvim_config_dir }}/init.vim"
 nvim_plugin_config_dir: "{{ nvim_config_dir }}/nvim-config"
 nvim_coc_settings_file: "{{ nvim_config_dir }}/coc-settings.json"
+nvim_cmake_copy_compile_commands: CMakeCopyCompileCommands
 ccls_clang_args: {}
 ccls_tmp_dir: /tmp/ccls
 clang_format_fileoption: file

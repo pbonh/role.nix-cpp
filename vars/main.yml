@@ -28,10 +28,10 @@ cpp_dap_plugin_settings:
 dap_plugin_settings: "{{ cpp_dap_plugin_settings }}"
 cpp_extra_plugin_settings:
   - "command! CMakeDefaultConfigureOptions :CMake<Space>configure<Space>-G<Space>Ninja<Space>-DCMAKE_C_COMPILER=/usr/bin/gcc<Space>-DCMAKE_CXX_COMPILER=/usr/bin/g++"
-  - "command! CMakeCopyCompileCommands :call system('ln -fs build/linux-debug/compile_commands.json .')"
+  - "command! {{ nvim_cmake_copy_compile_commands }} :call system('ln -fs build/linux-debug/compile_commands.json .')"
   - "function! s:cmake_configure_func()"
   - "     :CMakeDefaultConfigureOptions"
-  - "     :CMakeCopyCompileCommands"
+  - "     :{{ nvim_cmake_copy_compile_commands }}"
   - "endfunction"
   - "command! -nargs=0 CMakeDefaultConfigureCommand call s:cmake_configure_func()"
   - "nmap <Leader>c [cmake-p]"
