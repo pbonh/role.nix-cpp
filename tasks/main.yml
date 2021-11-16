@@ -17,8 +17,8 @@
 - name: VSCode CppTools | Install VSCode CppTools | task
   import_tasks: install_vscode_cpptools.yml
 
-#- name: Neovim | Install Neovim Plugin/Settings | task
-#  import_tasks: install_neovim_plugins.yml
+- name: Neovim | Install Neovim Plugin/Settings | task
+  import_tasks: install_neovim_plugins.yml
 
 #- name: Nix | Build Nix Environment | nix
 #  changed_when: false
