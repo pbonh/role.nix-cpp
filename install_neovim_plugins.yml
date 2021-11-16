@@ -1,111 +1,24 @@
 ---
-- name: CCLS | Install Highlighting Plugin for Neovim | lineinfile
-  changed_when: false
-  lineinfile:
-    path: "{{ nvim_init }}"
-    insertbefore: ".*Language Server Protocol Providers\\(End\\).*"
-    line: "Plug 'jackguo380/vim-lsp-cxx-highlight'"
+- name: Setup Neovim C/C++ FTPlugin Directories
+  file:
+    path: "{{ nvim_filetype_settings_dir }}/{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ cpp_file_extensions }}"
 
-- name: CCLS | Configure ccls for Neovim | blockinfile
-  changed_when: false
-  blockinfile:
-    path: "{{ nvim_coc_settings_file }}"
-    marker: "// !-- {mark} CCLS Language Server Config --"
-    insertbefore: ".*LSP Provider\\(End\\).*"
-    block: |2
-      "ccls": {
-        "command": "{{ nix_bin }}/ccls",
-        "filetypes": ["c", "cc", "cpp", "cxx", "c++", "objc", "objcpp"],
-        "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".vscode"],
-        "initializationOptions": {
-          "cache": {
-            "directory": "{{ ccls_tmp_dir }}"
-          },
-          "highlight": { "lsRanges" : true },
-          // clang args(begin)
-          // clang args(end)
-        }
-      },
+- name: Setup Neovim CMake FTPlugin Directories
+  file:
+    path: "{{ nvim_filetype_settings_dir }}/cmake"
+    state: directory
+    mode: "0755"
 
-- name: CMake | Install CMake Plugin for Neovim | lineinfile
-  changed_when: false
-  lineinfile:
-    path: "{{ nvim_init }}"
-    insertbefore: ".*Language Server Protocol Providers\\(End\\).*"
-    line: "Plug 'Shatur/neovim-cmake'"
+- name: Install C/C++ Commands
+  template:
+    src: commands.vim.j2
+    dest: "{{ nvim_filetype_settings_dir }}/{{ item }}/commands.vim"
+  loop: "{{ cpp_file_extensions }}"
 
-- name: CMake | Configure cmake for Neovim | blockinfile
-  changed_when: false
-  blockinfile:
-    path: "{{ nvim_init }}"
-    marker: '" !-- {mark} CMake Config --'
-    insertbefore: ".*Extra Plugin Settings\\(End\\).*"
-    block: |2
-      lua << EOF
-          require('telescope').load_extension('cmake')
-      EOF
-      command! CMakeDefaultConfigureOptions :CMake<Space>configure<Space>-G<Space>Ninja<Space>-DCMAKE_C_COMPILER=/usr/bin/gcc<Space>-DCMAKE_CXX_COMPILER=/usr/bin/g++
-      command! CMakeCopyCompileCommands :call system('ln -fs build/linux-debug/compile_commands.json .')
-      function! s:cmake_configure_func()
-           :CMakeDefaultConfigureOptions
-           :CMakeCopyCompileCommands
-      endfunction
-      command! -nargs=0 CMakeDefaultConfigureCommand call s:cmake_configure_func()
-      nmap <Leader>c [cmake-p]
-      xmap <Leader>c [cmake-p]
-      "nnoremap <silent> [cmake-p]c :CMake configure<CR>
-      nnoremap <silent> [cmake-p]c :CMakeDefaultConfigureCommand<CR>
-      nnoremap <silent> [cmake-p]b :CMake build<CR>
-      nnoremap <silent> [cmake-p]a :CMake build_all<CR>
-      nnoremap <silent> [cmake-p]r :CMake run<CR>
-      nnoremap <silent> [cmake-p]d :CMake debug<CR>
-      nnoremap <silent> [cmake-p]l :CMake clean<CR>
-      nnoremap <silent> [cmake-p]t :CMake set_target_arguments<Space>
-      nnoremap <silent> [telescope-p]c :Telescope cmake select_target<CR>
-      nnoremap <silent> [telescope-p]b :Telescope cmake select_build_type<CR>
-      let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}
-      let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}
-
-- name: VSCode CppTools | Configure vscode-cpptools for Neovim | blockinfile
-  changed_when: false
-  blockinfile:
-    path: "{{ nvim_init }}"
-    marker: '" !-- {mark} VSCode CppTools Config --'
-    insertbefore: ".*Extra Plugin Settings\\(End\\).*"
-    block: |2
-      lua << EOF
-        local dap = require('dap')
-        dap.adapters.cppdbg = {
-          type = 'executable',
-          command = '{{ vscode_cpptools_executable_path }}',
-        }
-
-        {{ vscode_cpptools_runner }}
-      EOF
-
-- name: VSCode CppTools | Configure vscode-cpptools for Neovim | blockinfile
-  changed_when: false
-  blockinfile:
-    path: "{{ nvim_init }}"
-    marker: '" !-- {mark} Neoformat C/C++ Config --'
-    insertbefore: ".*Neoformat Settings\\(End\\).*"
-    block: |2
-      let g:neoformat_cpp_clangformat = {
-        \ 'exe': '{{ nix_bin }}/clang-format',
-        \ 'args': ['--style={{ clang_format_fileoption }}']
-      \}
-      let g:neoformat_enabled_cpp = ['clangformat']
-      let g:neoformat_enabled_c = ['clangformat']
-
-- name: Neomake | Install Neomake C++ Settings | blockinfile
-  changed_when: false
-  blockinfile:
-    path: "{{ nvim_init }}"
-    marker: '" !-- {mark} ALE C/C++ Config --'
-    insertbefore: ".*ALE Settings\\(End\\).*"
-    block: |2
-      let g:ale_c_parse_compile_commands=1
-      let g:ale_linters = {
-      \   'c': ['gcc', 'g++'],
-      \   'cpp': ['gcc', 'g++'],
-      \}
+- name: Install CMake Commands
+  template:
+    src: commands.vim.j2
+    dest: "{{ nvim_filetype_settings_dir }}/cmake/commands.vim"
