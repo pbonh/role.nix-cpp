@@ -1,0 +1,16 @@
+---
+- name: GCCDiag | Setup GCCDiag download folder | file
+  file:
+    path: "{{ gccdiag_download }}"
+    state: directory
+    mode: "0755"
+
+- name: GCCDiag | Download GCCDiag | get_url
+  get_url:
+    url: "{{ gccdiag_url }}"
+    dest: "{{ gccdiag_download }}"
+
+- name: GCCDiag | Install GCCDiag | command
+  command: "cmake -B build -S. && cmake --build build"
+  args:
+    chdir: "{{ gccdiag_download }}/gccdiag"

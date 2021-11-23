@@ -68,6 +68,8 @@ vscode_cpptools_runner: |
   }
   dap.configurations.c = dap.configurations.cpp
   dap.configurations.rust = dap.configurations.cpp
+gccdiag_url: https://gitlab.com/andrejr/gccdiag
+gccdiag_download: "{{ dotfiles_user_home }}/.local/gccdiag"
 cpp_file_extensions:
   - c
   - cc
