@@ -6,8 +6,8 @@
     mode: "0755"
 
 - name: GCCDiag | Download GCCDiag | get_url
-  get_url:
-    url: "{{ gccdiag_url }}"
+  git:
+    repo: "{{ gccdiag_url }}"
     dest: "{{ gccdiag_download }}"
 
 - name: GCCDiag | Install GCCDiag | command
