@@ -5,7 +5,13 @@
     state: directory
     mode: "0755"
 
-- name: GCCDiag | Download GCCDiag | get_url
+- name: GCCDiag | Setup GCCDiag build folder | file
+  file:
+    path: "{{ gccdiag_download }}/build"
+    state: directory
+    mode: "0755"
+
+- name: GCCDiag | Download GCCDiag | git
   git:
     repo: "{{ gccdiag_url }}"
     dest: "{{ gccdiag_download }}"
