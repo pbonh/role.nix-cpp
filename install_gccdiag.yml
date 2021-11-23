@@ -13,4 +13,4 @@
 - name: GCCDiag | Install GCCDiag | command
   command: "cmake -B build -S. && cmake --build build"
   args:
-    chdir: "{{ gccdiag_download }}/gccdiag"
+    chdir: "{{ gccdiag_download }}"
