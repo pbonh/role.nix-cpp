@@ -20,8 +20,8 @@
 - name: Neovim | Install Neovim Plugin/Settings | task
   import_tasks: install_neovim_plugins.yml
 
-- name: GCCDiag | Install GCCDiag | task
-  import_tasks: install_gccdiag.yml
+#- name: GCCDiag | Install GCCDiag | task
+#  import_tasks: install_gccdiag.yml
 
 #- name: Nix | Build Nix Environment | nix
 #  changed_when: false
