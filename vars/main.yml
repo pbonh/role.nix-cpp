@@ -54,7 +54,6 @@ extra_plugin_settings:
   - "autocmd BufNewFile,BufRead *cpp.inc,*h.inc,*.cxx,*.hxx,*.hpp set filetype=cpp"
   - "autocmd BufNewFile,BufRead *.cc set filetype=c"
 cpp_extra_lua_plugin_settings:
-  - "require('telescope').load_extension('cmake')"
   - "local Path = require('plenary.path')"
   - "require('cmake').setup({"
   - "  parameters_file = 'neovim.json',"
