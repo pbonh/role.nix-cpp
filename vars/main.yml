@@ -50,9 +50,9 @@ cpp_extra_plugin_settings:
   - "nnoremap <silent> [telescope-p]b :Telescope cmake select_build_type<CR>"
   - "let g:cmake_asyncrun_options={'mode': 'term', 'pos': 'floaterm', 'save': 2}"
   - "let g:cmake_target_asyncrun_options={'mode': 'term', 'pos': 'floaterm'}"
-extra_plugin_settings:
   - "autocmd BufNewFile,BufRead *cpp.inc,*h.inc,*.cxx,*.hxx,*.hpp set filetype=cpp"
   - "autocmd BufNewFile,BufRead *.cc set filetype=c"
+extra_plugin_settings: "{{ cpp_extra_plugin_settings }}"
 cpp_extra_lua_plugin_settings:
   - "local Path = require('plenary.path')"
   - "require('cmake').setup({"
