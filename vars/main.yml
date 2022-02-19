@@ -28,7 +28,7 @@ cpp_neoformat_plugin_settings:
   - "vim.cmd([["
   - "  let g:neoformat_cpp_clangformat = {"
   - "  \\  'exe': '{{ nix_bin }}/clang-format',"
-  - "  \\  'args': ['--style={{ clang_format_fileoption }}']"
+  - "  \\  'args': ['--style={{ clang_format_fileoption }}'],"
   - "  }"
   - "]])"
   - "vim.cmd([[ let g:neoformat_enabled_cpp = ['clangformat'] ]])"
