@@ -9,6 +9,7 @@ treesitter_parsers:
   - cpp
   - c
   - llvm
+  - cmake
 language_neovim_plugins: "{{ cpp_neovim_plugins }}"
 cpp_ale_plugin_settings:
   - "let g:ale_c_parse_compile_commands=1"
