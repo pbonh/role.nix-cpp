@@ -12,6 +12,8 @@ nix_config: "{{ xdg_config_dir }}/nixpkgs/config.nix"
 zsh_username: "{{ lookup('env', 'USER') }}"
 git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
+gcc_path: /usr/bin/gcc
+gpp_path: /usr/bin/g++
 cpp_ubuntu_packages:
   - build-essential
   - libboost-all-dev
