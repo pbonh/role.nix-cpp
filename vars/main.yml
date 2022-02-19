@@ -21,7 +21,7 @@ cpp_ale_plugin_settings:
   - "  \\  'cxx': ['gcc', 'g++'],"
   - "  \\  'hpp': ['gcc', 'g++'],"
   - "  \\  'hxx': ['gcc', 'g++'],"
-  - "  }"
+  - "  \\}"
   - "]])"
 ale_plugin_settings: "{{ cpp_ale_plugin_settings }}"
 cpp_neoformat_plugin_settings:
