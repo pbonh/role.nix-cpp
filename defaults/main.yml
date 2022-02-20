@@ -14,6 +14,15 @@ git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
 gcc_path: /usr/bin/gcc
 gpp_path: /usr/bin/g++
+cpp_fedora_packages:
+  - boost
+  - boost-devel
+  - clang
+  - lld
+  - cmake
+  - ninja-build
+  - flex
+  - bison
 cpp_ubuntu_packages:
   - build-essential
   - libboost-all-dev

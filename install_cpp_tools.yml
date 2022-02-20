@@ -6,6 +6,13 @@
     name: "{{ cpp_ubuntu_packages }}"
     state: latest
 
+- name: C++ | Install Fedora C++ Tools | dnf
+  become: true
+  when: ansible_distribution == 'Fedora'
+  dnf:
+    name: "{{ cpp_fedora_packages }}"
+    state: latest
+
 - name: Conan | Install Conan | command
   command: "{{ nix_bin }}/pipx install conan"
   args:
