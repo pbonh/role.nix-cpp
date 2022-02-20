@@ -1,7 +1,12 @@
 ---
 cpp_neovim_plugins:
   - "use 'p00f/clangd_extensions.nvim'"
-  - "use 'Shatur/neovim-cmake'"
+  - "use { 'Shatur/neovim-cmake',"
+  - "  requires = {"
+  - "    'nvim-lua/plenary.nvim',"
+  - "    'mfussenegger/nvim-dap'"
+  - "  }"
+  - "}"
 lsp_providers_setup:
   - "require'lspconfig'.clangd.setup{}"
   - "require(\"clangd_extensions\").setup()"
@@ -70,7 +75,12 @@ cpp_extra_lua_plugin_settings:
   - "require('cmake').setup({"
   - "  parameters_file = 'neovim.json',"
   - "  configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1' },"
-  - "  runInTerminal = true,"
+  - "  dap_configuration = {"
+  - "    type = 'codelldb',"
+  - "    request = 'launch',"
+  - "    stopOnEntry = false,"
+  - "    runInTerminal = true,"
+  - "  }"
   - "})"
 extra_lua_plugin_settings: "{{ cpp_extra_lua_plugin_settings }}"
 ccls_coc_config:
