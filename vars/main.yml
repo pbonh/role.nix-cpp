@@ -16,7 +16,7 @@ lsp_providers_setup:
   - "    \"{{ clangd_bin }}\","
   - "    \"--background-index\","
   - "  },"
-  - "  filetypes = {% raw %}{{% endraw %} {{ cpp_file_extensions | map('regex_replace', '^(.*)$', '\"\\\\1\"') | join(',')}} {% raw %}}{% endraw %},"
+  - "  filetypes = {% raw %}{{% endraw %} {{ cpp_file_extensions | map('regex_replace', '^(.*)$', '\"\\1\"') | join(',')}} {% raw %}}{% endraw %},"
   - "}"
 treesitter_parsers:
   - cpp
