@@ -10,6 +10,14 @@ cpp_neovim_plugins:
 lsp_providers_setup:
   - "require'lspconfig'.clangd.setup{}"
   - "require(\"clangd_extensions\").setup()"
+  - "require('lspconfig').clangd.setup {"
+  - "  on_attach = keybinds.on_attach,"
+  - "  cmd = {"
+  - "    \"{{ clangd_bin }}\","
+  - "    \"--background-index\","
+  - "  },"
+  - "  filetypes = {% raw %}{{% endraw %} {{ cpp_file_extensions |join(', ') }} {% raw %}}{% endraw %},"
+  - "}"
 treesitter_parsers:
   - cpp
   - c
