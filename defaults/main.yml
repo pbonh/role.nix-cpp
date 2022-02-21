@@ -12,8 +12,11 @@ nix_config: "{{ xdg_config_dir }}/nixpkgs/config.nix"
 zsh_username: "{{ lookup('env', 'USER') }}"
 git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
-gcc_path: /usr/bin/gcc
-gpp_path: /usr/bin/g++
+gcc_bin: /usr/bin/gcc
+gpp_bin: /usr/bin/g++
+circt_gcc: "{{ gcc_bin }}"
+circt_gpp: "{{ gpp_bin }}"
+cmake_bin: "{{ nix_bin }}/cmake"
 cpp_fedora_packages:
   - boost
   - boost-devel
