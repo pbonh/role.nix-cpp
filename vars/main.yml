@@ -48,7 +48,7 @@ cpp_dap_plugin_settings:
   - "  {{ vscode_cpptools_runner | indent(width=2) }}"
 dap_plugin_settings: "{{ cpp_dap_plugin_settings }}"
 cpp_extra_plugin_settings:
-  - "command! CMakeDefaultConfigureOptions :CMake<Space>configure<Space>-G<Space>Ninja<Space>-DCMAKE_C_COMPILER={{ circt_gcc }}<Space>-DCMAKE_CXX_COMPILER={{ circt_gpp }}"
+  - "command! CMakeDefaultConfigureOptions :CMake<Space>configure<Space>-G<Space>Ninja<Space>-DCMAKE_C_COMPILER={{ gcc_bin }}<Space>-DCMAKE_CXX_COMPILER={{ gpp_bin }}"
   - "command! {{ nvim_cmake_copy_compile_commands }} :call system('ln -fs {{ nvim_cmake_build_dir }}/compile_commands.json .')"
   - "function! s:cmake_configure_func()"
   - "     :CMakeDefaultConfigureOptions"
