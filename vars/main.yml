@@ -101,7 +101,6 @@ ccls_coc_config:
 lsp_provider_coc_settings: "{{ ccls_coc_config }}"
 cpp_tools_nix:
   - clang-tools
-  - ccls
   - cmake
   - ninja
 lang_tools_nix: "{{ cpp_tools_nix }}"
