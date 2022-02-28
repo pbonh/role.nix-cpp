@@ -53,6 +53,7 @@ cpp_extra_lua_plugin_settings:
   - "  cmake_executable = '{{ cmake_bin }}',"
   - "  parameters_file = 'neovim.json',"
   - "  configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1' },"
+  - "  dap_open_command = require('dapui').open,"
   - "  dap_configuration = {"
   - "    type = 'codelldb',"
   - "    request = 'launch',"
