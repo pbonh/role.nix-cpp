@@ -8,6 +8,8 @@ cpp_neovim_plugins:
   - "    'stevearc/dressing.nvim'"
   - "  }"
   - "}"
+lsp_providers:
+  - clangd
 lsp_providers_setup:
   - "require(\"clangd_extensions\").setup()"
 treesitter_parsers:
