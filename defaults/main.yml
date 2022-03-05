@@ -94,3 +94,6 @@ cpp_file_extensions:
   - c++
   - objc
   - objcpp
+  - mlir
+  - llvm
+  - tablegen
