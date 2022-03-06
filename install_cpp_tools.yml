@@ -5,6 +5,17 @@
   apt:
     name: "{{ cpp_ubuntu_packages }}"
     state: latest
+    install_recommends: true
+
+- name: C++ | Install Ubuntu Clang | alternatives
+  become: true
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  community.general.alternatives:
+    name: "{{ item }}"
+    path: "/usr/bin/{{ item }}-{{ ubuntu_clang_version }}"
+  loop:
+    - clang
+    - clangd
 
 - name: C++ | Install Fedora C++ Tools | dnf
   become: true
