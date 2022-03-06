@@ -24,8 +24,12 @@ cpp_fedora_packages:
   - ninja-build
   - flex
   - bison
+ubuntu_clang_version: 12
 cpp_ubuntu_packages:
   - build-essential
+  - "clang-{{ ubuntu_clang_version }}"
+  - "clang-tools-{{ ubuntu_clang_version }}"
+  - "clangd-{{ ubuntu_clang_version }}"
   - libboost-all-dev
   - cmake
   - ninja-build
