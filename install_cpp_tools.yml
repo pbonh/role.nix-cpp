@@ -12,6 +12,7 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   community.general.alternatives:
     name: "{{ item }}"
+    link: "/usr/bin/{{ item }}"
     path: "/usr/bin/{{ item }}-{{ ubuntu_clang_version }}"
   loop:
     - clang
