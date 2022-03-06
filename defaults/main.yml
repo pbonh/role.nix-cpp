@@ -30,6 +30,8 @@ cpp_ubuntu_packages:
   - "clang-{{ ubuntu_clang_version }}"
   - "clang-tools-{{ ubuntu_clang_version }}"
   - "clangd-{{ ubuntu_clang_version }}"
+  - "lldb-{{ ubuntu_clang_version }}"
+  - "lld-{{ ubuntu_clang_version }}"
   - libboost-all-dev
   - cmake
   - ninja-build

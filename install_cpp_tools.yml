@@ -16,7 +16,10 @@
     path: "/usr/bin/{{ item }}-{{ ubuntu_clang_version }}"
   loop:
     - clang
+    - clang++
     - clangd
+    - lldb
+    - lld
 
 - name: C++ | Install Fedora C++ Tools | dnf
   become: true
