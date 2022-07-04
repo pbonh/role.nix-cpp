@@ -44,6 +44,7 @@ neoformat_plugin_settings: "{{ cpp_neoformat_plugin_settings }}"
 cpp_dap_plugin_settings:
   - "  local dap = require('dap')"
   - "  dap.adapters.cppdbg = {"
+  - "    id = 'cppdbg',"
   - "    type = 'executable',"
   - "    command = '{{ vscode_cpptools_executable_path }}',"
   - "  }"
