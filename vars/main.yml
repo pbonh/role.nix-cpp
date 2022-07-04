@@ -8,6 +8,11 @@ cpp_neovim_plugins:
   - "    'stevearc/dressing.nvim'"
   - "  }"
   - "}"
+  - "use { 'Badhi/nvim-treesitter-cpp-tools',"
+  - "  requires = {"
+  - "    'nvim-treesitter/nvim-treesitter'"
+  - "  }"
+  - "}"
 lsp_providers:
   - clangd
 lsp_providers_setup:
