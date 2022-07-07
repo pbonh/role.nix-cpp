@@ -22,6 +22,16 @@ treesitter_parsers:
   - c
   - llvm
   - cmake
+treesitter_extra_config:
+  - "nt_cpp_tools = {"
+  - "    enable = true,"
+  - "    preview = {"
+  - "        quit = 'q', -- optional keymapping for quit preview"
+  - "        accept = '<tab>' -- optional keymapping for accept preview"
+  - "    },"
+  - "    header_extension = 'h', -- optional"
+  - "    source_extension = 'cxx', -- optional"
+  - "},"
 language_neovim_plugins: "{{ cpp_neovim_plugins }}"
 cpp_ale_plugin_settings:
   - "vim.cmd([[ let g:ale_c_parse_compile_commands=1 ]])"
