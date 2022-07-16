@@ -32,3 +32,9 @@
   command: "{{ nix_bin }}/pipx install conan"
   args:
     creates: "{{ bin_directory }}/conan"
+
+- name: NeoCMakeLSP | Install NeoCMakeLSP | command
+  command: "{{ cargo_bin }} install {{ item.name }}"
+  args:
+    creates: "{{ cargo_bin }}/{{ item.path }}"
+  with_items: "{{ cargo_cpp_packages }}"

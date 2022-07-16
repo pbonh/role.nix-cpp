@@ -24,6 +24,7 @@ cpp_fedora_packages:
   - ninja-build
   - flex
   - bison
+  - lldb
 ubuntu_clang_version: 12
 cpp_ubuntu_packages:
   - build-essential
@@ -103,3 +104,7 @@ cpp_file_extensions:
   - mlir
   - llvm
   - tablegen
+cargo_path: "{{ ansible_env.HOME }}/.cargo/bin"
+cargo_bin: "{{ cargo_path }}/cargo"
+cargo_cpp_packages:
+  - { name: neocmakelsp, path: neocmakelsp }
