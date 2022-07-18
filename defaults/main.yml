@@ -97,12 +97,19 @@ vscode_cpptools_runner: |
       args = {},
     },
     {
-      name: 'LLDB-Debug',
-      type: 'lldb',
-      request: 'launch',
-      program: '/tmp/a.out',
-      args: [ 'one', 'two', 'three' ],
-      env: [ 'FOO=1', 'BAR' ],
+      name = 'LLDB-Debug',
+      type = 'lldb',
+      request = 'launch',
+      program = '/tmp/a.out',
+      args = {
+        'one',
+        'two',
+        'three',
+      },
+      env = {
+        'FOO=1',
+        'BAR',
+      },
     },
     {
       name = 'Launch',
