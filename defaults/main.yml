@@ -14,6 +14,7 @@ git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
 gcc_bin: /usr/bin/gcc
 gpp_bin: /usr/bin/g++
+lldb_vscode_bin: /usr/bin/lldb-vscode
 cmake_bin: "{{ nix_bin }}/cmake"
 cpp_fedora_packages:
   - boost
@@ -65,9 +66,9 @@ vscode_cpptools_extension_neovim_json_config: "{{ vscode_cpptools_extension_file
 vscode_cpptools_runner: |
   dap.configurations.cpp = {
     {
-      name = "Launch file",
-      type = "cppdbg",
-      request = "launch",
+      name = 'Launch file',
+      type = 'cppdbg',
+      request = 'launch',
       program = function()
         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
       end,
@@ -85,6 +86,46 @@ vscode_cpptools_runner: |
       program = function()
         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
       end,
+    },
+    {
+      -- If you get an 'Operation not permitted' error using this, try disabling YAMA:
+      --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+      name = 'Attach to process',
+      type = 'cppdbg',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+      request = 'attach',
+      pid = require('dap.utils').pick_process,
+      args = {},
+    },
+    {
+      name: 'LLDB-Debug',
+      type: 'lldb',
+      request: 'launch',
+      program: '/tmp/a.out',
+      args: [ 'one', 'two', 'three' ],
+      env: [ 'FOO=1', 'BAR' ],
+    },
+    {
+      name = 'Launch',
+      type = 'lldb',
+      request = 'launch',
+      program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      end,
+      cwd = '${workspaceFolder}',
+      stopOnEntry = false,
+      args = {},
+
+      -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+      --
+      --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+      --
+      -- Otherwise you might get the following error:
+      --
+      --    Error on launch: Failed to attach to the target process
+      --
+      -- But you should be aware of the implications:
+      -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+      -- runInTerminal = false,
     },
   }
   dap.configurations.c = dap.configurations.cpp
