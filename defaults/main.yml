@@ -64,7 +64,6 @@ vscode_cpptools_executable_path_mono: "{{ vscode_cpptools_extension_path }}/exte
 vscode_cpptools_extension_json_config: "{{ vscode_cpptools_extension_file_path }}/cppdbg.ad7Engine.json"
 vscode_cpptools_extension_neovim_json_config: "{{ vscode_cpptools_extension_file_path }}/debugAdapters/bin/nvim-dap.ad7Engine.json"
 vscode_cpptools_runner: |
-  dap.configurations.cpp = {
     {
       name = 'Launch file',
       type = 'cppdbg',
@@ -96,6 +95,7 @@ vscode_cpptools_runner: |
       pid = require('dap.utils').pick_process,
       args = {},
     },
+lldb_vscode_runner: |
     {
       name = 'LLDB-Debug',
       type = 'lldb',
@@ -121,6 +121,13 @@ vscode_cpptools_runner: |
       cwd = '${workspaceFolder}',
       stopOnEntry = false,
       args = {},
+      env = function()
+        local variables = {}
+        for k, v in pairs(vim.fn.environ()) do
+          table.insert(variables, string.format("%s=%s", k, v))
+        end
+        return variables
+      end,
 
       -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
       --
@@ -134,9 +141,6 @@ vscode_cpptools_runner: |
       -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
       -- runInTerminal = false,
     },
-  }
-  dap.configurations.c = dap.configurations.cpp
-  dap.configurations.rust = dap.configurations.cpp
 gccdiag_url: https://gitlab.com/andrejr/gccdiag
 gccdiag_download: "{{ dotfiles_user_home }}/.local/gccdiag"
 cpp_file_extensions:

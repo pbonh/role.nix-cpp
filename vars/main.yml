@@ -107,7 +107,12 @@ cpp_dap_plugin_settings:
   - "    command = '{{ lldb_vscode_bin }}', -- adjust as needed, must be absolute path"
   - "    name = 'lldb'"
   - "  }"
-  - "  {{ vscode_cpptools_runner | indent(width=2) }}"
+  - "  dap.configurations.cpp = {"
+  - "    {{ vscode_cpptools_runner | indent(width=2) }}"
+  - "    {{ lldb_vscode_runner | indent(width=2) }}"
+  - "  }"
+  - "  dap.configurations.c = dap.configurations.cpp"
+  - "  dap.configurations.rust = dap.configurations.cpp"
 dap_plugin_settings: "{{ cpp_dap_plugin_settings }}"
 cpp_extra_lua_plugin_settings:
   - "local Path = require('plenary.path')"
