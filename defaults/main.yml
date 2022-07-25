@@ -14,6 +14,7 @@ git_name: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_NAME') }}"
 git_email: "{{ lookup('env', 'DOTFILES_BOOTSTRAP_GIT_EMAIL') }}"
 gcc_bin: "{{ nix_bin }}/gcc"
 gpp_bin: "{{ nix_bin }}/g++"
+gdb_bin: "{{ nix_bin }}/gdb"
 lldb_vscode_bin: "{{ nix_bin }}/lldb-vscode"
 cmake_bin: "{{ nix_bin }}/cmake"
 clangd_bin: "{{ nix_bin }}/clangd"
@@ -80,7 +81,7 @@ vscode_cpptools_runner: |
       request = 'launch',
       MIMode = 'gdb',
       miDebuggerServerAddress = 'localhost:1234',
-      miDebuggerPath = '/usr/bin/gdb',
+      miDebuggerPath = '{{ gdb_bin }}',
       cwd = '${workspaceFolder}',
       program = function()
         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
