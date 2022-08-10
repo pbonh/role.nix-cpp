@@ -22,8 +22,3 @@
 
 #- name: GCCDiag | Install GCCDiag | task
 #  import_tasks: install_gccdiag.yml
-
-#- name: Nix | Build Nix Environment | nix
-#  changed_when: false
-#  command:
-#    cmd: "{{ nix_bin }}/nix-env -i {{ nix_buildenv_name }}"
