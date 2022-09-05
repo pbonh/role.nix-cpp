@@ -158,7 +158,7 @@ cpp_file_extensions:
   - mlir
   - llvm
   - tablegen
-cpp_file_extensions_comma_list: "{{ ''' + cpp_file_extensions |join('', '') + '\"' }}"
+cpp_file_extensions_comma_list: "{{ ''' + cpp_file_extensions |join('', '') + ''' }}"
 cargo_path: "{{ ansible_env.HOME }}/.cargo/bin"
 cargo_bin: "{{ cargo_path }}/cargo"
 cargo_cpp_packages:
