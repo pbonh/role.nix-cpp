@@ -1,13 +1,13 @@
 ---
 extra_nvim_language_mappings_cpp:
   - "m.nname('<leader>c', 'C/C++ CMake')"
-  - "nnoremap('<leader>cc', '<cmd>CMake configure<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Configure')"
-  - "nnoremap('<leader>ct', '<cmd>CMake select_target<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Select Target')"
-  - "nnoremap('<leader>cb', '<cmd>CMake build<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Build Selected Target')"
-  - "nnoremap('<leader>ca', '<cmd>CMake build_all<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Build All')"
-  - "nnoremap('<leader>cr', '<cmd>CMake run<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Run Target')"
-  - "nnoremap('<leader>cd', '<cmd>CMake debug<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Debug Target')"
-  - "nnoremap('<leader>cl', '<cmd>CMake clean<CR>', 'silent', { ft = 'cpp' }, 'C/C++ CMake: Clean')"
+  - "nnoremap('<leader>cc', '<cmd>CMake configure<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Configure')"
+  - "nnoremap('<leader>ct', '<cmd>CMake select_target<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Select Target')"
+  - "nnoremap('<leader>cb', '<cmd>CMake build<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Build Selected Target')"
+  - "nnoremap('<leader>ca', '<cmd>CMake build_all<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Build All')"
+  - "nnoremap('<leader>cr', '<cmd>CMake run<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Run Target')"
+  - "nnoremap('<leader>cd', '<cmd>CMake debug<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Debug Target')"
+  - "nnoremap('<leader>cl', '<cmd>CMake clean<CR>', 'silent', { ft = 'cpp', 'c', 'cmake' }, 'C/C++ CMake: Clean')"
 extra_nvim_language_mappings: "{{ extra_nvim_language_mappings_cpp }}"
 cpp_neovim_plugins:
   - "use 'p00f/clangd_extensions.nvim'"
